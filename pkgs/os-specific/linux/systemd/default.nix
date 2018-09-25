@@ -30,6 +30,14 @@ in stdenv.mkDerivation rec {
     sha256 = "114vq71gcddi4qm2hyrj5jsas9599s0h5mg65jfpvxhfyaw54cpv";
   };
 
+  patches = [
+    # Fix build with meson 0.48
+    (fetchpatch {
+      url = https://github.com/systemd/systemd/commit/8f6b442a78d0b485f044742ad90b2e8271b4e68e.patch;
+      sha256 = "0gfk5g32jz4nxvnfns77pjs96d6r7mg1m666hha7c85r1svnv56a";
+    })
+  ];
+
   outputs = [ "out" "lib" "man" "dev" ];
 
   nativeBuildInputs =
